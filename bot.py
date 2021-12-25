@@ -1,8 +1,10 @@
+import os
 import discord
 from discord.ext import commands
-from config import TOKEN
+from dotenv import load_dotenv
 
 client = commands.Bot(command_prefix=">")
+load_dotenv()
 
 
 @client.event
@@ -49,4 +51,4 @@ async def unban(ctx, *, member):
             return
     await ctx.send(f"{member} was not found!")
 
-client.run(TOKEN)
+client.run(os.getenv("TOKEN"))
